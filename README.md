@@ -1,5 +1,5 @@
 # README app
-[![GitHub License](https://img.shields.io/badge/License-MIT-<COLOR>.svg)](https://shields.io/)
+[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
 
 ## Description
 
