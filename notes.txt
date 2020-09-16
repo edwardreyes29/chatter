@@ -21,3 +21,10 @@
 Namespace -> tech for rooms for all messages related to tech
 -> create with login
  
+
+DEBUG sessions
+
+Terminal:
+  DEBUG=* npm run start
+
+  - will log everything that has happened in the background
