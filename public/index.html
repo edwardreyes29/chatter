@@ -44,13 +44,24 @@
     crossorigin="anonymous"></script>
   <script src="/socket.io/socket.io.js"></script>
   <script>
-    const socket = io();
+    const room = 'javascript';
+    // const socket = io();
+    const socket = io('/tech'); // connect to tech namespace
     $('form').submit(() => {
-      socket.emit('message', $('#m').val());
+
+      let msg = $('#m').val();  // value of input
+      socket.emit('message', { msg, room });
       // Once message is emitted, empty the value
       $('#m').val('');
       return false;
     });
+
+    // events in socket.io api cannot be used for our own events
+    socket.on('connect', () => {
+      // on connections, emit to everyone that a user is connected
+      // socket.emit('message', 'user connected');
+      socket.emit('join', { room: room });
+    })
 
     // Update html -> when server receives a message...
     socket.on('message', (msg) => {

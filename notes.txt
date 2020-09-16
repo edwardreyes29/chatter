@@ -14,3 +14,10 @@
       // emit another message to server
       socket.emit('another event', { jeremy: 'I am great thank you' });
     });
+
+  
+  
+>>> namespace, same server, not a different url
+Namespace -> tech for rooms for all messages related to tech
+-> create with login
+ 
