@@ -15,6 +15,12 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/public/index.html');
 });
 
+// JavaScript room
+app.get('/javascript', (req, res) => {
+  // Send index.html file
+  res.sendFile(__dirname + '/public/javascript.html');
+});
+
 
 // Can create more than one namespace
 // ==================================================

@@ -7,29 +7,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <style>
-      form { padding:20px; position: fixed; bottom: 0px; width: 100%; padding-right: 50px;}
-      #messages { list-style-type: none; margin: 0; padding: 0; width: 100%;}
-      #messages li { padding: 5px 10px;}
-      #messages li:nth-child(odd) { background: #eee}
-    </style>
 </head>
+
 <body>
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Tech space chatter</h1>
+      <p class="lead">Select which room you'd like to join below!!!</p>
+    </div>
+  </div>
   <div class="container-fluid">
     <div class="row">
-      <ul id="messages"></ul>
-    </div>
-    <div class="row">
-      <div class="col-lg-6">
-        <form action="">
-          <div class="input-group mb-3">
-            <input id="m" autocomplete="off" type="text" class="form-control" placeholder="Message" aria-label="Message" aria-describedby="button-addon2">
-            <div class="input-group-append">
-              <button class="btn btn-success" type="submit" id="button-addon2">Send</button>
-            </div>
-          </div>
-        </form>
-      </div>
+      <ul class="list-group col">
+        <a href="/javascript" class="list-group-item list-group-item-action">JavaScript</a>
+        <a href="#" class="list-group-item">Python</a>
+        <a href="#" class="list-group-item">CSS</a>
+      </ul>
     </div>
   </div>
   <!-- JS, Popper.js, and jQuery -->
@@ -42,32 +35,6 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
     crossorigin="anonymous"></script>
-  <script src="/socket.io/socket.io.js"></script>
-  <script>
-    const room = 'javascript';
-    // const socket = io();
-    const socket = io('/tech'); // connect to tech namespace
-    $('form').submit(() => {
-
-      let msg = $('#m').val();  // value of input
-      socket.emit('message', { msg, room });
-      // Once message is emitted, empty the value
-      $('#m').val('');
-      return false;
-    });
-
-    // events in socket.io api cannot be used for our own events
-    socket.on('connect', () => {
-      // on connections, emit to everyone that a user is connected
-      // socket.emit('message', 'user connected');
-      socket.emit('join', { room: room });
-    })
-
-    // Update html -> when server receives a message...
-    socket.on('message', (msg) => {
-      $('#messages').append($('<li>').text(msg));
-    });
-  </script>
 </body>
 
 </html>
