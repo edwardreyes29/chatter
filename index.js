@@ -16,10 +16,10 @@ app.get('/', (req, res) => {
 // When a connection is made, emit a message & expect 'another event' event
 io.on('connection', (socket) => {
   console.log('user connected');
-  // Event called message: pass data when message is emitted
-  socket.emit('message', { manny: 'hey how are you?'});
-  // Once this event occurs, console.log data
-  socket.on('another event', (data) => {
-    console.log(data)
-  })
-})
+  
+  socket.on('message', (msg) => {
+    console.log(`message: ${msg}`);
+    io.emit('message', msg);
+  });
+
+});

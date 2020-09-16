@@ -1,0 +1,16 @@
+// (server) Event called message: pass data when message is emitted
+  socket.emit('message', { manny: 'hey how are you?'});
+  // Once this event occurs, console.log data
+  socket.on('another event', (data) => {
+    console.log(data)
+  })
+
+
+    const socket = io.connect('http://localhost:3000');
+    // Server will send message when connected
+    socket.on('message', (data) => {
+      // console log data sent from server
+      console.log(data);
+      // emit another message to server
+      socket.emit('another event', { jeremy: 'I am great thank you' });
+    });
