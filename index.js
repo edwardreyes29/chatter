@@ -21,6 +21,17 @@ app.get('/javascript', (req, res) => {
   res.sendFile(__dirname + '/public/javascript.html');
 });
 
+// Python room
+app.get('/python', (req, res) => {
+  // Send index.html file
+  res.sendFile(__dirname + '/public/python.html');
+});
+
+// CSS room
+app.get('/css', (req, res) => {
+  // Send index.html file
+  res.sendFile(__dirname + '/public/css.html');
+});
 
 // Can create more than one namespace
 // ==================================================
